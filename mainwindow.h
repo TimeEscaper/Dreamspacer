@@ -18,6 +18,7 @@ public:
 
 private slots:
     void on_webView_loadFinished(bool arg1);
+    void on_webView_urlChanged(const QUrl &arg1);
 };
 
 #endif // MAINWINDOW_H

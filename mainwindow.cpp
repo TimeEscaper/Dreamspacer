@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "global.h"
-#include "debug.h"
+//#include "debug.h"
 #include <QString>
 #include <QUrlQuery>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,10 +20,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_webView_loadFinished(bool arg1)
 {
-    QMessageBox msgBox;
-    msgBox.setText("Hello, World!");
-    msgBox.show();
+}
 
+void MainWindow::on_webView_urlChanged(const QUrl &arg1)
+{
     QString loadedUrlStr = ui->webView->url().toString();
     loadedUrlStr.replace("#","?");
     QUrl loadedUrl = QUrl(loadedUrlStr);
@@ -33,7 +34,6 @@ void MainWindow::on_webView_loadFinished(bool arg1)
         Core::Global::token = loadedUrlQuery.queryItemValue("access_token");
         Core::Global::masterId = loadedUrlQuery.queryItemValue("user_id").toLong();
 
-        msgBox.setText("Hello, World!");
-        msgBox.show();
+        ui->label->setText(Core::Global::token+"\n"+QString::number(Core::Global::masterId));
     }
 }

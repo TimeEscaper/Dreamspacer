@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
+
     QString appIdStr = QString::number(Core::Global::appId);
     QString toLoad = "https://oauth.vk.com/authorize?client_id=" + appIdStr
                     + "&redirect_uri=blank.html&display=popup&scope=friends,messages,audio"
