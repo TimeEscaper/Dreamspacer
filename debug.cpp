@@ -4,5 +4,5 @@ void Debug::DebugMessage(QString msg)
 {
     QMessageBox msgBox;
     msgBox.setText(msg);
-    msgBox.show();
+    msgBox.exec();
 }

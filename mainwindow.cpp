@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "global.h"
-//#include "debug.h"
+#include "sec.h"
 #include <QString>
 #include <QUrlQuery>
 #include <QMessageBox>
@@ -34,6 +34,12 @@ void MainWindow::on_webView_urlChanged(const QUrl &arg1)
         Core::Global::token = loadedUrlQuery.queryItemValue("access_token");
         Core::Global::masterId = loadedUrlQuery.queryItemValue("user_id").toLong();
 
-        ui->label->setText(Core::Global::token+"\n"+QString::number(Core::Global::masterId));
+        bool success = Core::Sec::SaveSession(Core::Global::token,Core::Global::masterId);
+        if(!success)
+        {
+            QMessageBox msg;
+            msg.setText("Saving session error!");
+            msg.exec();
+        }
     }
 }

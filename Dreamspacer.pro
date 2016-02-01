@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     vkapi.cpp \
     global.cpp \
-    debug.cpp
+    debug.cpp \
+    sec.cpp
 
 HEADERS  += mainwindow.h \
     global.h \
     vkapi.h \
-    debug.h
+    debug.h \
+    sec.h
 
 FORMS    += mainwindow.ui
