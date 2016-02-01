@@ -3,6 +3,6 @@
 
 #include <QString>
 
-bool CheckToken(long int masterId, QString token);
+//bool CheckToken(long int masterId, QString token);
 
 #endif

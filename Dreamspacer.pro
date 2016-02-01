@@ -14,15 +14,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    vkapi.cpp \
     global.cpp \
     debug.cpp \
-    sec.cpp
+    sec.cpp \
+    vkapi_functions.cpp \
+    vkapi_types.cpp
 
 HEADERS  += mainwindow.h \
     global.h \
-    vkapi.h \
     debug.h \
-    sec.h
+    sec.h \
+    vkapi_functions.h \
+    vkapi_types.h
 
 FORMS    += mainwindow.ui
