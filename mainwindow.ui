@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>688</width>
+    <width>1006</width>
     <height>503</height>
    </rect>
   </property>
@@ -17,10 +17,10 @@
    <widget class="QWebView" name="webView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>0</y>
-      <width>651</width>
-      <height>401</height>
+      <width>981</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="url">
@@ -29,13 +29,23 @@
      </url>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>301</width>
+      <height>451</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>688</width>
+     <width>1006</width>
      <height>21</height>
     </rect>
    </property>
