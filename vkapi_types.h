@@ -2,10 +2,11 @@
 #define VKAPI_TYPES_H
 
 #include <QString>
+#include <QList>
 
-namespace VkAPI
+namespace Vk
 {
-    typedef enum { MESSAGE,IMAGE,VIDEO,DOCUMENT } VkType;
+    typedef enum { MESSAGE,IMAGE,VIDEO,DOCUMENT,DIALOG,CHAT } VkType;
 
     class VkObject
     {
@@ -24,6 +25,25 @@ namespace VkAPI
             bool isOut;
             QString title;
             QString body;
+    };
+
+    class VkDialog: public VkObject
+    {
+        public:
+            VkType type = DIALOG;
+            long int talkerId;
+            long int ownerId;
+            long int id;
+    };
+
+    class VkChat: public VkDialog
+    {
+        public:
+            VkType type = CHAT;
+            long int chatId;
+            long int adminId;
+            QString title;
+            QList<long int> members;
     };
 }
 

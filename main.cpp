@@ -3,6 +3,7 @@
 #include "global.h"
 #include "sec.h"
 #include "debug.h"
+#include "vkapi.h"
 #include <fstream>
 #include <QApplication>
 #include <QNetworkAccessManager>
@@ -12,10 +13,7 @@
 #include <QEventLoop>
 using namespace std;
 
-void GetDialogFinished(QNetworkReply* res)
-{
-    Debug::DebugMessage(res->readAll());
-}
+using namespace Vk;
 
 int main(int argc, char *argv[])
 {
@@ -23,8 +21,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-
-    w.ui->listWidget->setVisible(false);
+    w.InterfaceVisibility(false);
 
     Core::Sec::UserSession User;
     ifstream input("udf.dat",ios::binary);
@@ -34,10 +31,10 @@ int main(int argc, char *argv[])
         input.read((char*)&User,sizeof(User));
         Core::Global::token = User.token;
         Core::Global::masterId = User.userId;
-        w.ui->webView->setVisible(false);
-        w.ui->listWidget->setVisible(true);
 
-        QNetworkAccessManager downloader;
+        w.InterfaceVisibility(true);
+
+       /* QNetworkAccessManager downloader;
         QNetworkRequest getRequest;
         getRequest.setUrl(QUrl("https://api.vk.com/method/messages.getDialogs?count=1&access_token="+Core::Global::token));
         QNetworkReply *res;
@@ -48,7 +45,11 @@ int main(int argc, char *argv[])
         QObject::connect(&downloader,SIGNAL(finished(QNetworkReply*)),&ev,SLOT(quit()));
         ev.exec();
 
-        Debug::DebugMessage(res->readAll());
+        Debug::DebugMessage(res->readAll());*/
+
+        VkAPI vk;
+        QObject::connect(&vk,SIGNAL(DialogDownloadFinished(QString)),&w,SLOT(Vk_DialogDownloadFinished(QString)));
+        vk.GetDialogs(Core::Global::token);
 
     }
     else

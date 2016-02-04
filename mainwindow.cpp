@@ -18,9 +18,35 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::InterfaceVisibility(bool visible)
+{
+    if(visible)
+    {
+        ui->webView->setVisible(false);
+        ui->listWidget->setVisible(true);
+        ui->listView->setVisible(true);
+        ui->pushButton->setVisible(true);
+    }
+    else
+    {
+        ui->webView->setVisible(true);
+        ui->listWidget->setVisible(false);
+        ui->listView->setVisible(false);
+        ui->pushButton->setVisible(false);
+    }
+}
+
+void MainWindow::Vk_DialogDownloadFinished(QString res)
+{
+    QMessageBox msg;
+    msg.setText(res);
+    msg.exec();
+}
+
 void MainWindow::on_webView_loadFinished(bool arg1)
 {
 }
+
 
 void MainWindow::on_webView_urlChanged(const QUrl &arg1)
 {
@@ -41,5 +67,6 @@ void MainWindow::on_webView_urlChanged(const QUrl &arg1)
             msg.setText("Saving session error!");
             msg.exec();
         }
+        InterfaceVisibility(true);
     }
 }

@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     global.cpp \
     debug.cpp \
     sec.cpp \
-    vkapi_functions.cpp \
-    vkapi_types.cpp
+    vkapi_types.cpp \
+    vkapi.cpp
 
 HEADERS  += mainwindow.h \
     global.h \
     debug.h \
     sec.h \
-    vkapi_functions.h \
-    vkapi_types.h
+    vkapi_types.h \
+    vkapi.h
 
 FORMS    += mainwindow.ui
+
+CONFIG += c++11

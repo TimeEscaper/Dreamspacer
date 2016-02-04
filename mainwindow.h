@@ -14,7 +14,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     Ui::MainWindow *ui;
+    void InterfaceVisibility(bool visible);
     ~MainWindow();
+
+public slots:
+    void Vk_DialogDownloadFinished(QString res);
 
 private slots:
     void on_webView_loadFinished(bool arg1);
